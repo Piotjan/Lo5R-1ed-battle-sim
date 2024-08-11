@@ -2,8 +2,9 @@
 Module with common functions for project.
 """
 import random
+from pathlib import Path
 
-from .structures_enums import dices_in_roll
+from .structures_enums_classes import dices_in_roll
 
 
 def roll_dices(dices: dices_in_roll) -> int:
@@ -44,3 +45,20 @@ def make_sum_from_rolls(rolls: list[int], dices_to_sum: int) -> int:
     biggest_rolls = rolls[-dices_to_sum:]
     rolls_sum = sum(biggest_rolls)
     return rolls_sum
+
+
+def create_directory(path_to_create: Path) -> None:
+    """Function creates new directory.
+
+    This unction creates new directory. It should not be a file path.
+
+    Args:
+        path_to_create (Path): Path to create.
+
+    Raises:
+        ValueError: In case of passing path to file.] instead of directory.
+    """
+    if path_to_create.suffix:
+        raise ValueError(f'Cannot create directory form filepath: {path_to_create.as_posix()}!')
+    else:
+        path_to_create.mkdir(parents=True, exist_ok=True)
