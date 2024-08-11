@@ -3,7 +3,7 @@ Module with common functions for project.
 """
 import random
 
-from structures_enums import dices_in_roll
+from .structures_enums import dices_in_roll
 
 
 def roll_dices(dices: dices_in_roll) -> int:
@@ -36,6 +36,10 @@ def make_sum_from_rolls(rolls: list[int], dices_to_sum: int) -> int:
     """
     Functions sums the biggest rolls results.
     """
+    if dices_to_sum == 0:
+        raise AttributeError('Dices to remain has to be bigger than 0!')
+    if len(rolls) < dices_to_sum:
+        raise AttributeError(f'Cannot sum more dices ({dices_to_sum}) than made rolls ({len(rolls)})')
     rolls.sort()
     biggest_rolls = rolls[-dices_to_sum:]
     rolls_sum = sum(biggest_rolls)
