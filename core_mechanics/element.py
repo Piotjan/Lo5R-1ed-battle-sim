@@ -1,8 +1,8 @@
 """
 Module with classes and functions to simulate elements mechanics.
 """
-from Utilities import RingsNames
-from Utilities import CharacterAttributes
+from temp_name import RingsNames
+from temp_name import CharacterAttributes
 
 
 class Ring:
